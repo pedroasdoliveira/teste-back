@@ -1,0 +1,47 @@
+{
+  "name": "teste-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "nodemon ./src/server.ts",
+    "local": "ts-node ./src/server.ts",
+    "dev": "npm run build && NODE_ENV=development node build/server.js",
+    "stage": "npm run build && NODE_ENV=staging node build/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "pg": "^8.11.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.32.1",
+    "sequelize-cli": "^6.6.1",
+    "sequelize-typescript": "^2.1.5",
+    "ts-node": "^10.9.1",
+    "uuid": "^9.0.0",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^20.4.1",
+    "@types/nodemailer": "^6.4.8",
+    "@types/uuid": "^9.0.2",
+    "@types/yup": "^0.32.0",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.1.6"
+  }
+}
