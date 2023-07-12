@@ -14,7 +14,12 @@ class App {
   }
 
   private middlewares(): void {
-    this.app.use(cors());
+    this.app.use(
+      cors({
+        credentials: true,
+        origin: process.env.FRONTEND_URL,
+      }),
+    );
     this.app.use(compression());
     this.app.use(express.json({ limit: "600mb" }));
 
