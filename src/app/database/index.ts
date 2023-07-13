@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
-import Users from "app/models/Users";
+import Users from "../models/Users";
 
 const dbConfig = require("../config/database");
 

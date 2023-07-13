@@ -22,6 +22,10 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      tokenHash: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       createdAt: {
         type: DataTypes.DATE,
         allowNull: false,

@@ -1,3 +1,5 @@
+require('../bootstrap');
+
 module.exports = {
   define: {
     charset: "utf8mb4",

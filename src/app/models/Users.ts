@@ -16,7 +16,7 @@ import { hash, compare } from "bcryptjs";
   tableName: "Users",
   timestamps: true,
 })
-class Users extends Model<Users> {
+class Users extends Model {
   @PrimaryKey
   @AutoIncrement
   @Column
@@ -33,6 +33,9 @@ class Users extends Model<Users> {
 
   @Column(DataType.STRING)
   passwordHash: string;
+
+  @Column(DataType.STRING)
+  tokenHash: string;
 
   @CreatedAt
   createdAt: Date;
@@ -54,7 +57,7 @@ class Users extends Model<Users> {
     console.log("newHash", teste);
     console.log("databaseHash", this.getDataValue("passwordHash"));
     console.log("teste", teste == this.getDataValue("passwordHash"));
-    
+
     return compare(password, this.getDataValue("passwordHash"));
   };
 }
