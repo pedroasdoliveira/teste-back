@@ -44,6 +44,7 @@
     "@types/nodemailer": "^6.4.8",
     "@types/uuid": "^9.0.2",
     "@types/yup": "^0.32.0",
+    "babel-register": "^6.26.0",
     "nodemon": "^3.0.1",
     "typescript": "^5.1.6"
   }
