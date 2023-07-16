@@ -35,11 +35,6 @@ class SessionController {
         });
 
       const test = SendRefreshToken(res, token);
-      console.log(test);
-
-      // res.cookie('access-token', token, {
-      //   maxAge: 60 * 60 * 24 * 1000
-      // })
 
       return res.status(200).json({
         token,
