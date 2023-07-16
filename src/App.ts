@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import compression from "compression";
 import routes from "./routes";
+import cookieParser from 'cookie-parser';
 
 class App {
   public app: Application;
@@ -23,6 +24,7 @@ class App {
     );
     this.app.use(compression());
     this.app.use(express.json({ limit: "600mb" }));
+    this.app.use(cookieParser());
 
     this.app.use((req: Request, res: Response, next: NextFunction) => {
       res.header("Access-Control-Allow-Origin", "*");
