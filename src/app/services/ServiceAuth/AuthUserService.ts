@@ -52,7 +52,7 @@ class AuthUserService {
     }
 
     if (!(await user.checkPassword(password))) {
-      throw new AppError("Senha incorreta!", 401);
+      throw new AppError("E-mail ou senha incorretos!", 401);
     }
 
     const token = createAccessToken(user);
