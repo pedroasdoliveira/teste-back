@@ -8,7 +8,15 @@ interface TokenPayload {
   name: string;
 }
 
-const VerifyJWT = (req: Request, res: Response, next: NextFunction): void => {
+interface AuthenticatedRequest extends Request {
+  authenticated?: boolean;
+}
+
+const VerifyJWT = (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction,
+): void => {
   const accessToken = req.cookies["access-token"];
 
   if (!accessToken) {
@@ -27,21 +35,6 @@ const VerifyJWT = (req: Request, res: Response, next: NextFunction): void => {
     console.log(error);
     throw new AppError("Token invalido", 403);
   }
-
-  return next();
-
-  // const token = authHeader.split(" ")[1];
-  // jwt.verify(
-  //   token,
-  //   process.env.ACCESS_TOKEN_SECRET as string,
-  //   (err, decoded) => {
-  //     if (err) {
-  //       return res.sendStatus(403);
-  //     }
-
-  //     next();
-  //   },
-  // );
 };
 
 export default VerifyJWT;
