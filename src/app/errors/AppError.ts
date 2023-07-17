@@ -1,6 +1,7 @@
 enum ErrorCode {
   SessionExpired = "SESSAO_EXPIRADA",
   InvalidToken = "TOKEN_INVALIDO",
+  ErroCreateMethod = "ERRO_NO_METODO_DE_CRIACAO"
   // Adicione outros códigos de erro conforme necessário
 }
 
