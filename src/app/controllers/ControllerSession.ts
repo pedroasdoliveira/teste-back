@@ -34,7 +34,7 @@ class SessionController {
           password: this.password,
         });
 
-      const test = SendRefreshToken(res, token);
+      SendRefreshToken(res, token);
 
       return res.status(200).json({
         token,
