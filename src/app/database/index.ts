@@ -1,5 +1,8 @@
 import { Sequelize } from "sequelize-typescript";
+
 import Users from "../models/Users";
+import Tasks from "../models/Tasks";
+import TaskPoints from "../models/TaskPoints";
 
 const dbConfig = require("../config/database");
 
@@ -12,7 +15,7 @@ class Database {
   }
 
   private initModels(): void {
-    this.sequelize.addModels([Users]);
+    this.sequelize.addModels([Users, TaskPoints, Tasks]);
   }
 
   public getInstance(): Sequelize {
