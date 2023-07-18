@@ -27,12 +27,12 @@ class App {
     this.app.use(cookieParser());
 
     this.app.use((req: Request, res: Response, next: NextFunction) => {
-      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Origin", `${process.env.FRONTEND_URL}`);
       res.header(
         "Access-Control-Allow-Methods",
         "GET,POST,DELETE,OPTIONS,PUT,PATCH",
       );
-      res.header("Access-Control-Allow-Headers", "*");
+      res.header("Access-Control-Allow-Headers", `${process.env.FRONTEND_URL}`);
       next();
     });
 
