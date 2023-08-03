@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import AppError from '../../../shared/errors/AppError';
+
 import createTaskService from '../services/CreateTaskService';
+import AppErrors from '@shared/errors/AppErrors';
 
 export interface TaskPointsRequest {
   points: string;
@@ -53,11 +54,11 @@ class TaskController {
   // Setters
   set task(task: string) {
     if (task.trim() === '') {
-      throw new AppError('A task deve ter um nome!');
+      throw new AppErrors('A task deve ter um nome!');
     }
 
     if (task.trim().length < 4) {
-      throw new AppError('O nome da Task deve conter mais de 4 caracteres!');
+      throw new AppErrors('O nome da Task deve conter mais de 4 caracteres!');
     }
 
     this._task = task;
@@ -114,13 +115,16 @@ class TaskController {
       });
 
       return res.status(201).json({ data });
-    } catch (err) {
-      if (err instanceof AppError) {
-        return res.status(err.statusCode).json({ error: err.message });
+    } catch (error) {
+      if (error instanceof AppErrors) {
+        return res.status(error.statusCode).json(error);
       } else {
-        const exception = new Error((err as Error).message);
-        console.error(err);
-        return res.status(500).json({ error: exception.message });
+        return res
+          .status(500)
+          .json({
+            msg: 'Error interno no servidor ao criar informações!',
+            error: error,
+          });
       }
     }
   };

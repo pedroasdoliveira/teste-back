@@ -1,17 +1,20 @@
 import { Router } from 'express';
-import { Request, Response } from 'express';
-import UserController from '../../Users/controllers/ControllerUser';
+import { celebrate, Joi, Segments } from 'celebrate';
+
 import SessionController from '../controllers/ControllerSession';
-import VerifyJWT from '../middleware/verifyJWT';
 
 const authRoutes = Router();
-const userController = new UserController();
 const sessionController = new SessionController();
 
-authRoutes.post('/signup', userController.store);
-
-authRoutes.get('/users', VerifyJWT, userController.show);
-
-authRoutes.post('/login', sessionController.store);
+authRoutes.post(
+  '/login',
+  celebrate({
+    [Segments.BODY]: {
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+  }),
+  sessionController.store,
+);
 
 export default authRoutes;

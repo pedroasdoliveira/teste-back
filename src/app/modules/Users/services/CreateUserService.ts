@@ -1,4 +1,4 @@
-import AppError from '../../../shared/errors/AppError';
+import AppErrors from '../../../shared/errors/AppErrors';
 import Users from '../model/Users';
 import { hash } from 'bcryptjs';
 import * as Yup from 'yup';
@@ -58,7 +58,7 @@ class CreateUserService {
     try {
       await schema.validate(data);
     } catch (err: any) {
-      throw new AppError(err.message);
+      throw new AppErrors(err.message);
     }
 
     const userExist = await Users.findOne({
@@ -68,7 +68,7 @@ class CreateUserService {
     });
 
     if (userExist) {
-      throw new AppError('E-mail já cadastrado!', 409);
+      throw new AppErrors('E-mail já cadastrado!', 409);
     }
 
     const hashedPassword = await hash(this.password, 8);

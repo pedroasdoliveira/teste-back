@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt, { verify } from 'jsonwebtoken';
-import AppError from '../../../shared/errors/AppError';
+import AppErrors from '../../../shared/errors/AppErrors';
 import authConfig from '../../../config/auth';
 
 interface TokenPayload {
@@ -20,9 +20,8 @@ const VerifyJWT = (
   const accessToken = req.cookies['access-token'];
 
   if (!accessToken) {
-    throw new AppError('ERRO SESSÃO EXPIRADA!', 403);
+    throw new AppErrors('ERRO SESSÃO EXPIRADA!', 403);
   }
-  console.log(accessToken);
 
   try {
     const validToken = verify(accessToken, authConfig.secret);
@@ -33,7 +32,7 @@ const VerifyJWT = (
     }
   } catch (error) {
     console.log(error);
-    throw new AppError('Token invalido', 403);
+    throw new AppErrors('Token invalido', 403);
   }
 };
 

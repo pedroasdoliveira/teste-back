@@ -1,4 +1,4 @@
-import AppError from '../../../shared/errors/AppError';
+import AppErrors from '../../../shared/errors/AppErrors';
 import { createAccessToken, createRefreshToken } from '../../../shared/helpers/createToken';
 import { SerializedUser, SerializedUserModel } from '../../../shared/helpers/serializedUser';
 import Users from '../../Users/model/Users';
@@ -42,11 +42,11 @@ class AuthUserService {
     });
 
     if (!user) {
-      throw new AppError('Usuário não encontrado', 401);
+      throw new AppErrors('E-mail ou senha incorretos!', 401);
     }
 
     if (!(await user.checkPassword(password))) {
-      throw new AppError('E-mail ou senha incorretos!', 401);
+      throw new AppErrors('E-mail ou senha incorretos!', 401);
     }
 
     const token = createAccessToken(user);

@@ -1,7 +1,8 @@
-import AuthUserService from '../services/AuthUserService';
 import { Request, Response } from 'express';
+
+import AuthUserService from '../services/AuthUserService';
 import { SendRefreshToken } from '../../../shared/helpers/sendRefreshToken';
-import AppError from '../../../shared/errors/AppError';
+import AppErrors from '@shared/errors/AppErrors';
 
 class SessionController {
   private _email: string;
@@ -23,7 +24,7 @@ class SessionController {
     this._password = value;
   }
 
-  store = async (req: Request, res: Response): Promise<Response> => {
+  public store = async (req: Request, res: Response): Promise<Response> => {
     this.email = req.body.email;
     this.password = req.body.password;
 
@@ -40,13 +41,14 @@ class SessionController {
         token,
         user: serializedUser,
       });
-    } catch (err) {
-      if (err instanceof AppError) {
-        return res.status(err.statusCode).json({ error: err.message });
+    } catch (error) {
+      if (error instanceof AppErrors) {
+        return res.status(error.statusCode).json(error);
       } else {
-        const exception = new Error((err as Error).message);
-        console.error(err);
-        return res.status(500).json({ error: exception.message });
+        return res.status(500).json({
+          msg: 'Error interno no servidor ao pegar informações!',
+          error: error,
+        });
       }
     }
   };

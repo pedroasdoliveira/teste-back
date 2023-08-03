@@ -9,6 +9,7 @@ import express, { Application } from 'express';
 import { errors } from 'celebrate';
 
 import RequestsHeader from '@shared/middlewares/RequestsHeader';
+import Errors from '@shared/middlewares/Errors';
 import routes from '../app/shared/routes';
 
 class App {
@@ -18,6 +19,7 @@ class App {
     this.app = express();
     this.middlewares();
     this.routes();
+    this.appErrors();
   }
 
   private middlewares(): void {
@@ -39,7 +41,11 @@ class App {
 
   private routes(): void {
     this.app.use(routes);
+  }
+
+  private appErrors(): void {
     this.app.use(errors());
+    this.app.use(Errors);
   }
 }
 
