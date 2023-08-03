@@ -1,10 +1,11 @@
-import { Router } from "express";
-import authRoutes from "./authRoutes";
-import taskRoute from "./taskRoutes";
+import { Router } from 'express';
+
+import authRoutes from '../../modules/Auth/routes/auth.routes';
+import taskRoute from '../../modules/Tasks/routes/tasks.routes';
 
 const routes = Router();
 
-routes.use("/auth", authRoutes);
+routes.use('/auth', authRoutes);
 routes.use('/tasks', taskRoute);
 
 export default routes;

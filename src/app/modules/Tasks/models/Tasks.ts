@@ -5,8 +5,6 @@ import {
   UpdatedAt,
   Model,
   DataType,
-  BeforeCreate,
-  BeforeUpdate,
   PrimaryKey,
   AutoIncrement,
   HasMany,

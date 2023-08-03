@@ -1,13 +1,7 @@
-import Users from '../../modules/Users/model/Users';
-import AppError from '../../shared/errors/AppError';
-import {
-  createAccessToken,
-  createRefreshToken,
-} from '../../shared/helpers/createToken';
-import {
-  SerializedUser,
-  SerializedUserModel,
-} from '../../shared/helpers/serializedUser';
+import AppError from '../../../shared/errors/AppError';
+import { createAccessToken, createRefreshToken } from '../../../shared/helpers/createToken';
+import { SerializedUser, SerializedUserModel } from '../../../shared/helpers/serializedUser';
+import Users from '../../Users/model/Users';
 
 interface Request {
   email: string;
@@ -40,7 +34,7 @@ class AuthUserService {
     this._password = value;
   }
 
-  authUser = async ({ email, password }: Request): Promise<Response> => {
+  public authUser = async ({ email, password }: Request): Promise<Response> => {
     const user = await Users.findOne({
       where: {
         email,

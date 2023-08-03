@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import CreateUserService from '../../services/ServiceAuth/CreateUserService';
-import AppError from '../../shared/errors/AppError';
-import Users from '../Users/model/Users';
+import CreateUserService from '../services/CreateUserService';
+import AppError from '../../../shared/errors/AppError';
+import Users from '../model/Users';
 
 class UserController {
   private _name: string;
@@ -32,7 +32,7 @@ class UserController {
     this._password = value;
   }
 
-  store = async (req: Request, res: Response): Promise<Response> => {
+  public store = async (req: Request, res: Response): Promise<Response> => {
     this.name = req.body.name;
     this.email = req.body.email;
     this.password = req.body.password;
@@ -56,7 +56,7 @@ class UserController {
     }
   };
 
-  show = async (req: Request, res: Response): Promise<Response> => {
+  public show = async (req: Request, res: Response): Promise<Response> => {
     try {
       const data = await Users.findAll();
 

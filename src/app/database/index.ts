@@ -1,8 +1,8 @@
 import { Sequelize } from 'sequelize-typescript';
 
 import Users from '../modules/Users/model/Users';
-import Tasks from '../modules/models/Tasks';
-import TaskPoints from '../modules/models/TaskPoints';
+import Tasks from '../modules/Tasks/models/Tasks';
+import TaskPoints from '../modules/Tasks/models/TaskPoints';
 
 const dbConfig = require('../config/database');
 

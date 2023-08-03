@@ -1,4 +1,5 @@
 import { sign } from 'jsonwebtoken';
+
 import Users from '../../modules/Users/model/Users';
 import authConfig from '../../config/auth';
 

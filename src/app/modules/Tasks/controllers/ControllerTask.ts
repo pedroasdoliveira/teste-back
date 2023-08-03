@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import AppError from '../../shared/errors/AppError';
-import createTaskService from '../../services/ServiceTasks/CreateTaskService';
+import AppError from '../../../shared/errors/AppError';
+import createTaskService from '../services/CreateTaskService';
 
 export interface TaskPointsRequest {
   points: string;
@@ -91,7 +91,7 @@ class TaskController {
     this._taskPoints = taskPoints;
   }
 
-  store = async (req: Request, res: Response): Promise<Response> => {
+  public store = async (req: Request, res: Response): Promise<Response> => {
     this.task = req.body.task;
     this.priority = req.body.priority;
     this.date_deadline = req.body.date_deadline;

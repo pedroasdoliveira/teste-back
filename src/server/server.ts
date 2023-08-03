@@ -4,7 +4,7 @@ import database from "../app/database";
 
 dotenv.config();
 const app = new App();
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 8080;
 
 database
   .sync()

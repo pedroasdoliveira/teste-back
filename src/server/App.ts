@@ -1,10 +1,12 @@
-import '../app/shared/http/bootstrap';
+import '../app/config/bootstrap';
 
+import 'express-async-errors';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Application } from 'express';
+import { errors } from 'celebrate';
 
 import RequestsHeader from '@shared/middlewares/RequestsHeader';
 import routes from '../app/shared/routes';
@@ -35,8 +37,9 @@ class App {
     this.app.use(bodyParser.urlencoded({ extended: false }));
   }
 
-  private routes() {
+  private routes(): void {
     this.app.use(routes);
+    this.app.use(errors());
   }
 }
 

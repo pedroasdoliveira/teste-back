@@ -1,16 +1,12 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
-import UserController from '../../modules/controllers/ControllerUser';
-import SessionController from '../../modules/controllers/ControllerSession';
-import VerifyJWT from '../middlewares/verifyJWT';
+import UserController from '../../Users/controllers/ControllerUser';
+import SessionController from '../controllers/ControllerSession';
+import VerifyJWT from '../middleware/verifyJWT';
 
 const authRoutes = Router();
 const userController = new UserController();
 const sessionController = new SessionController();
-
-authRoutes.get('/', (req: Request, res: Response) => {
-  res.send('Hello');
-});
 
 authRoutes.post('/signup', userController.store);
 

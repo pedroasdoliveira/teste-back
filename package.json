@@ -6,13 +6,13 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "start": "nodemon ./src/server/server.ts",
+    "start": "nodemon -r tsconfig-paths/register -r ts-node/register src/server/server.ts",
     "start:prod": "nodemos dist/server/server.js",
-    "local": "ts-node ./src/server.ts",
+    "local": "ts-node ./src/server/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "dev": "npm run build && NODE_ENV=development node build/server.js",
-    "stage": "npm run build && NODE_ENV=staging node build/server.js"
+    "dev": "npm run build && NODE_ENV=development node build/server/server.js",
+    "stage": "npm run build && NODE_ENV=staging node build/server/server.js"
   },
   "keywords": [],
   "author": "",

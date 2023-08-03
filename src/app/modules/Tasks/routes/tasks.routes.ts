@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import VerifyJWT from '../middlewares/verifyJWT';
-import TaskController from '../../modules/controllers/ControllerTask';
+import VerifyJWT from '../../Auth/middleware/verifyJWT';
+import TaskController from '../controllers/ControllerTask';
 
 const taskRoute = Router();
 const taskController = new TaskController();

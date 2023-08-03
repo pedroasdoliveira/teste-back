@@ -1,7 +1,6 @@
-import { TaskPointsRequest } from '../../modules/controllers/ControllerTask';
-import AppError from '../../shared/errors/AppError';
-import Tasks from '../../modules/models/Tasks';
-import TaskPoints from '../../modules/models/TaskPoints';
+import { TaskPointsRequest } from '../controllers/ControllerTask';
+import TaskPoints from '../models/TaskPoints';
+import Tasks from '../models/Tasks';
 
 interface TaskPointsResponse extends TaskPointsRequest {
   id: number;
@@ -34,7 +33,7 @@ interface Response {
 class createTaskService {
   constructor() {}
 
-  createTask = async (data: Request): Promise<Response> => {
+  public createTask = async (data: Request): Promise<Response> => {
     const createTask = await Tasks.create({
       task: data.task,
       priority: data.priority,
