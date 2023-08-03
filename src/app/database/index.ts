@@ -1,10 +1,10 @@
-import { Sequelize } from "sequelize-typescript";
+import { Sequelize } from 'sequelize-typescript';
 
-import Users from "../models/Users";
-import Tasks from "../models/Tasks";
-import TaskPoints from "../models/TaskPoints";
+import Users from '../modules/Users/model/Users';
+import Tasks from '../modules/Tasks/models/Tasks';
+import TaskPoints from '../modules/Tasks/models/TaskPoints';
 
-const dbConfig = require("../config/database");
+const dbConfig = require('../config/database');
 
 class Database {
   private sequelize: Sequelize;

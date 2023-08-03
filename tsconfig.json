@@ -1,21 +1,30 @@
 {
   "compilerOptions": {
     "lib": ["es6", "dom", "es2017"],
-    "baseUrl": "./src",
+    "baseUrl": "./",
+    // "typeRoots": ["@types", "./node_modules/@types"],
+    "paths": {
+      "@config/*": ["src/app/config/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@database/*": ["src/app/database/*"]
+    },
+    "esModuleInterop": true,
     "target": "es6",
     "module": "commonjs",
     "outDir": "./dist",
+    "rootDir": "src",
+    "allowJs": true,
     "strict": true,
+    "noImplicitAny": true,
     "strictPropertyInitialization": false,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "rootDir": "./src",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
