@@ -5,7 +5,7 @@ import authConfig from "../config/auth";
 export const createAccessToken = (user: Users) => {
   const { secret, expiresIn } = authConfig;
 
-  return sign({ id: user.id, name: user.name, email: user.email }, secret, {
+  return sign({ id: user.id, name: user.name }, secret, {
     expiresIn,
   });
 };
