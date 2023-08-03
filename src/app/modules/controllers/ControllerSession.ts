@@ -1,7 +1,7 @@
-import AuthUserService from "../services/ServiceAuth/AuthUserService";
-import { Request, Response } from "express";
-import { SendRefreshToken } from "../helpers/sendRefreshToken";
-import AppError from "../errors/AppError";
+import AuthUserService from '../../services/ServiceAuth/AuthUserService';
+import { Request, Response } from 'express';
+import { SendRefreshToken } from '../../shared/helpers/sendRefreshToken';
+import AppError from '../../shared/errors/AppError';
 
 class SessionController {
   private _email: string;

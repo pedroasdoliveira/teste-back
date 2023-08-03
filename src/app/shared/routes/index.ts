@@ -5,6 +5,6 @@ import taskRoute from "./taskRoutes";
 const routes = Router();
 
 routes.use("/auth", authRoutes);
-routes.use(taskRoute);
+routes.use('/tasks', taskRoute);
 
 export default routes;

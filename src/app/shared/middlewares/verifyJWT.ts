@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from "express";
-import jwt, { verify } from "jsonwebtoken";
-import AppError from "../errors/AppError";
-import authConfig from "../config/auth";
+import { Request, Response, NextFunction } from 'express';
+import jwt, { verify } from 'jsonwebtoken';
+import AppError from '../errors/AppError';
+import authConfig from '../../config/auth';
 
 interface TokenPayload {
   id: string;
@@ -17,10 +17,10 @@ const VerifyJWT = (
   res: Response,
   next: NextFunction,
 ): void => {
-  const accessToken = req.cookies["access-token"];
+  const accessToken = req.cookies['access-token'];
 
   if (!accessToken) {
-    throw new AppError("ERRO SESSÃO EXPIRADA!", 403);
+    throw new AppError('ERRO SESSÃO EXPIRADA!', 403);
   }
   console.log(accessToken);
 
@@ -33,7 +33,7 @@ const VerifyJWT = (
     }
   } catch (error) {
     console.log(error);
-    throw new AppError("Token invalido", 403);
+    throw new AppError('Token invalido', 403);
   }
 };
 

@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
-import CreateUserService from "../services/ServiceAuth/CreateUserService";
-import AppError from "../errors/AppError";
-import Users from "../models/Users";
+import { Request, Response } from 'express';
+import CreateUserService from '../../services/ServiceAuth/CreateUserService';
+import AppError from '../../shared/errors/AppError';
+import Users from '../Users/model/Users';
 
 class UserController {
   private _name: string;
@@ -54,7 +54,7 @@ class UserController {
         return res.status(500).json({ error: exception.message });
       }
     }
-  }
+  };
 
   show = async (req: Request, res: Response): Promise<Response> => {
     try {
@@ -70,7 +70,7 @@ class UserController {
         return res.status(500).json({ error: exception.message });
       }
     }
-  }
+  };
 }
 
 export default UserController;

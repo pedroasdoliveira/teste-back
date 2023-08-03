@@ -1,7 +1,7 @@
-import AppError from "./../../errors/AppError";
-import Users from "./../../models/Users";
-import { hash } from "bcryptjs";
-import * as Yup from "yup";
+import AppError from '../../shared/errors/AppError';
+import Users from '../../modules/Users/model/Users';
+import { hash } from 'bcryptjs';
+import * as Yup from 'yup';
 
 interface CreateUserRequest {
   name: string;
@@ -68,7 +68,7 @@ class CreateUserService {
     });
 
     if (userExist) {
-      throw new AppError("E-mail já cadastrado!", 409);
+      throw new AppError('E-mail já cadastrado!', 409);
     }
 
     const hashedPassword = await hash(this.password, 8);
@@ -85,7 +85,7 @@ class CreateUserService {
       name: user.name,
       email: user.email,
     };
-  }
+  };
 }
 
 export default new CreateUserService();

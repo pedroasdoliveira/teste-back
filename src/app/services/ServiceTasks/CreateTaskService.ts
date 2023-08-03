@@ -1,7 +1,7 @@
-import { TaskPointsRequest } from "../../controllers/ControllerTask";
-import AppError from "./../../errors/AppError";
-import Tasks from "./../../models/Tasks";
-import TaskPoints from "./../..//models/TaskPoints";
+import { TaskPointsRequest } from '../../modules/controllers/ControllerTask';
+import AppError from '../../shared/errors/AppError';
+import Tasks from '../../modules/models/Tasks';
+import TaskPoints from '../../modules/models/TaskPoints';
 
 interface TaskPointsResponse extends TaskPointsRequest {
   id: number;
@@ -42,14 +42,14 @@ class createTaskService {
       time_deadline: data.time_deadline,
       completed: data.completed,
       organization: data.organization,
-      invited: data.invited
+      invited: data.invited,
     });
 
-    const taskPointsPromises = data.taskPoints.map(async(point) => {
+    const taskPointsPromises = data.taskPoints.map(async point => {
       const createTaskPoint = await TaskPoints.create({
         points: point.points,
         makeTask: point.makeTask,
-        tasksId: createTask.id
+        tasksId: createTask.id,
       });
       return createTaskPoint;
     });
@@ -65,7 +65,7 @@ class createTaskService {
       completed: createTask.completed,
       organization: createTask.organization,
       invited: createTask.invited,
-      taskPoints: taskPoints
+      taskPoints: taskPoints,
     };
   };
 }

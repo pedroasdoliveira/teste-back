@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import AppError from "../errors/AppError";
-import createTaskService from "../services/ServiceTasks/CreateTaskService";
+import { Request, Response } from 'express';
+import AppError from '../../shared/errors/AppError';
+import createTaskService from '../../services/ServiceTasks/CreateTaskService';
 
 export interface TaskPointsRequest {
   points: string;
@@ -52,12 +52,12 @@ class TaskController {
 
   // Setters
   set task(task: string) {
-    if (task.trim() === "") {
-      throw new AppError("A task deve ter um nome!");
+    if (task.trim() === '') {
+      throw new AppError('A task deve ter um nome!');
     }
 
     if (task.trim().length < 4) {
-      throw new AppError("O nome da Task deve conter mais de 4 caracteres!");
+      throw new AppError('O nome da Task deve conter mais de 4 caracteres!');
     }
 
     this._task = task;

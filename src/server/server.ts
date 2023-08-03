@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import App from "./App";
-import database from "./app/database";
+import database from "../app/database";
 
 dotenv.config();
 const app = new App();

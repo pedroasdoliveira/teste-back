@@ -1,13 +1,13 @@
-import Users from "./../../models/Users";
-import AppError from "./../../errors/AppError";
+import Users from '../../modules/Users/model/Users';
+import AppError from '../../shared/errors/AppError';
 import {
   createAccessToken,
   createRefreshToken,
-} from "../../helpers/createToken";
+} from '../../shared/helpers/createToken';
 import {
   SerializedUser,
   SerializedUserModel,
-} from "../../helpers/serializedUser";
+} from '../../shared/helpers/serializedUser';
 
 interface Request {
   email: string;
@@ -48,11 +48,11 @@ class AuthUserService {
     });
 
     if (!user) {
-      throw new AppError("Usuário não encontrado", 401);
+      throw new AppError('Usuário não encontrado', 401);
     }
 
     if (!(await user.checkPassword(password))) {
-      throw new AppError("E-mail ou senha incorretos!", 401);
+      throw new AppError('E-mail ou senha incorretos!', 401);
     }
 
     const token = createAccessToken(user);
