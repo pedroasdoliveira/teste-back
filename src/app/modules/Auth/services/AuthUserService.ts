@@ -1,7 +1,13 @@
 import AppErrors from '../../../shared/errors/AppErrors';
-import { createAccessToken, createRefreshToken } from '../../../shared/helpers/createToken';
-import { SerializedUser, SerializedUserModel } from '../../../shared/helpers/serializedUser';
-import Users from '../../Users/model/Users';
+import {
+  createAccessToken,
+  createRefreshToken,
+} from '../../../shared/helpers/createToken';
+import {
+  SerializedUser,
+  SerializedUserModel,
+} from '../../../shared/helpers/serializedUser';
+import Users from '../../../models/Users';
 
 interface Request {
   email: string;

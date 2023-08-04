@@ -1,4 +1,4 @@
-import Users from '../../modules/Users/model/Users';
+import Users from '../../models/Users';
 
 export interface SerializedUser {
   id: number;

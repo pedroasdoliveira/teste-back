@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
-import Users from '../model/Users';
+import Users from '../../../models/Users';
 import AppErrors from '@shared/errors/AppErrors';
 
 class UserController {

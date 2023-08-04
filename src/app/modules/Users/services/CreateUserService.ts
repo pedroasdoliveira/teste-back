@@ -1,5 +1,5 @@
 import AppErrors from '../../../shared/errors/AppErrors';
-import Users from '../model/Users';
+import Users from '../../../models/Users';
 import { hash } from 'bcryptjs';
 import * as Yup from 'yup';
 

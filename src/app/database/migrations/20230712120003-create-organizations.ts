@@ -1,39 +1,27 @@
-import { QueryInterface, DataTypes } from "sequelize";
+import { QueryInterface, DataTypes } from 'sequelize';
 
 module.exports = {
   up: async (queryInterface: QueryInterface) => {
-    await queryInterface.createTable("Tasks", {
+    await queryInterface.createTable('Organizations', {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      task: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      priority: {
+      logo: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      leader: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      date_deadline: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      time_deadline: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      completed: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-      organization: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      invited: {
+      members: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },
@@ -49,6 +37,6 @@ module.exports = {
   },
 
   down: async (queryInterface: QueryInterface) => {
-    await queryInterface.dropTable("Tasks");
+    await queryInterface.dropTable('Organizations');
   },
 };

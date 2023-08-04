@@ -1,5 +1,5 @@
 import { TaskPointsRequest } from '../controllers/ControllerTask';
-import TaskPoints from '../models/TaskPoints';
+import TaskPoints from '../../../models/TaskPoints';
 import Tasks from '../models/Tasks';
 
 interface TaskPointsResponse extends TaskPointsRequest {

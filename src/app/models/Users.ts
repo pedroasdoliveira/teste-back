@@ -35,6 +35,9 @@ class Users extends Model {
   passwordHash: string;
 
   @Column(DataType.STRING)
+  avatar: string;
+
+  @Column(DataType.STRING)
   tokenHash: string;
 
   @CreatedAt

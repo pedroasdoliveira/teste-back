@@ -1,6 +1,6 @@
 import { sign } from 'jsonwebtoken';
 
-import Users from '../../modules/Users/model/Users';
+import Users from '../../models/Users';
 import authConfig from '../../config/auth';
 
 export const createAccessToken = (user: Users) => {
